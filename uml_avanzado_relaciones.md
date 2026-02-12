@@ -1,7 +1,7 @@
 ## Diagrama de clases Pedidos y relaciones
 Vamos a crear los diagramas con dos prompt diferentes, uno más detallado y otro sencillo y observaremos el resultado.
 
-## Prompt base con indicaciones sobre agregaciones y composición
+## Prompt base (1) con indicaciones sobre agregaciones y composición
 Quiero diseñar el diagrama de clases UML de un sistema con clases en Java orientado a objetos, antes de programarlo. El sistema será una aplicación sencilla de gestión de pedidos para una tienda, con las siguientes funcionalidades: 
 
 - Un Cliente puede realizar varios pedidos. 
@@ -16,7 +16,7 @@ Quiero diseñar el diagrama de clases UML de un sistema con clases en Java orien
 
 Incluye: Composición donde el ciclo de vida dependa de otra clase, agregación donde la relación sea más débil, multiplicidades correctas (1, 0.., 1..), marca atributos privados con (-) y métodos públicos con (+), no expliques teoría, solo genera el bloque Mermaid listo para GitHub, no generes código Java. Es para incluirlo como documentación en GitHub. Diseña el sistema con una estructura clara y coherente. 
 
-## Diagrama generado:
+## Diagrama generado (1):
 ```mermaid
 classDiagram
 
@@ -58,7 +58,7 @@ Cliente "1" o-- "0..*" Pedido : realiza
 Pedido "1" *-- "1..*" LineaPedido : contiene
 LineaPedido "0..*" --> "1" Producto : producto
 ```
-## Prompt simplificado sin especificar relaciones de composición ni agregación:
+## Prompt simplificado (2) sin especificar relaciones de composición ni agregación:
 Quiero diseñar el diagrama de clases UML de un sistema con clases en Java orientado a objetos, antes de programarlo. El sistema será una aplicación sencilla de gestión de pedidos para una tienda, con las siguientes funcionalidades: 
 Un Cliente puede realizar varios pedidos. 
 Cada Pedido tiene una fecha y un estado (pendiente o entregado). 
@@ -114,3 +114,6 @@ Pedido "1" *-- "1..*" LineaPedido : contiene
 LineaPedido "0..*" --> "1" Producto : producto
 
 ```
+## Conclusión
+- El prompt simplificado obtiene el mismo resultado detallado en el diagrama de clases.
+- Es importante escribir las especificaciones lo más detalladas posible.
