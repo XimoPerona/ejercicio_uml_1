@@ -1,3 +1,4 @@
+## Calculadora con UI
 ```mermaid
 classDiagram
 direction LR
@@ -69,4 +70,55 @@ Calculadora ..> DivisionPorCeroException : lanza
 GestorOperaciones ..> DivisionPorCeroException : propaga
 ControladorCalculadora ..> DivisionPorCeroException : captura
 
+```
+## Calculadora por línea de comandos:
+```mermaid
+classDiagram
+direction LR
+
+class Main {
+  +main(args: String[]) void
+}
+
+class ControladorCalculadora {
+  -entrada: EntradaConsola
+  -salida: SalidaConsola
+  -gestor: GestorOperaciones
+  +ejecutar() void
+}
+
+class GestorOperaciones {
+  -calculadora: Calculadora
+  +resolver(op: String, a: double, b: double) double
+}
+
+class Calculadora {
+  +sumar(a: double, b: double) double
+  +restar(a: double, b: double) double
+  +multiplicar(a: double, b: double) double
+  +dividir(a: double, b: double) double
+}
+
+class DivisionPorCeroException {
+}
+
+class EntradaConsola {
+  +leerNumero(mensaje: String) double
+  +leerOperacion(mensaje: String) String
+}
+
+class SalidaConsola {
+  +mostrarResultado(resultado: double) void
+  +mostrarError(mensaje: String) void
+}
+
+Main --> ControladorCalculadora : inicia
+ControladorCalculadora --> EntradaConsola : usa
+ControladorCalculadora --> SalidaConsola : usa
+ControladorCalculadora --> GestorOperaciones : delega
+GestorOperaciones --> Calculadora : invoca
+
+Calculadora ..> DivisionPorCeroException : lanza
+GestorOperaciones ..> DivisionPorCeroException : propaga
+ControladorCalculadora ..> DivisionPorCeroException : captura
 ```
