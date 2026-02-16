@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     class Cliente {
         -String nombre
@@ -30,4 +31,4 @@ classDiagram
     Cliente "1" o-- "0..*" Pedido : realiza >
     Pedido "1" *-- "1..*" LineaPedido : compone >
     LineaPedido "0..*" --> "1" Producto : referencia >
-
+```
